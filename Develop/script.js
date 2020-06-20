@@ -1,51 +1,65 @@
 
-var lengthReq = function() {
-    length = window.prompt("Please enter a password length between 8 and 128 characters");
-    console.log(length)
-      if (length === null) {
-        return null
-      }
-      else if (length >= 8 && length <=128) { 
-        return length;
-      }
-      else {
-        window.alert("please enter a valid option");
-      lengthReq();     
-      }
-    };
 
+var lengthReq = function() {
+  //ask user to select password length
+  length = window.prompt("Please enter a password length between 8 and 128 characters");
+  console.log(length)
+  //if user selects 'cancel', reset generator 
+  if (length === null) {
+    return null
+  }
+  //if user enters a length within the requirements
+  else if (length >= 8 && length <=128) { 
+    return length;
+  }
+  //if user enters a length outside of the requirements,  function resets
+  else {
+    window.alert("please enter a valid option");
+    lengthReq();     
+  }
+};
 
 var getUppercase = function() {
+  //ask user if they want to include uppercase letters in password
   var uppercase = window.prompt("Would you like uppercase letters in your password, yes or no?") 
+  //if user selects 'cancel', reset generator 
   if (uppercase === null) {
     return null
   }
+  //if user selects 'yes', 
   uppercase = uppercase.toLowerCase(); 
   if (uppercase === "yes") {
     var uppercaseChoice = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
   } 
+  //if user selects 'no', results in empty string
   else if (uppercase === "no") {
     var uppercaseChoice = ""
   }
+  //if user enters an answer outside of requirements,  function resets
   else {
     window.alert("please enter a valid option!");
-   return this.getUppercase()
+    return this.getUppercase()
   }
   return uppercaseChoice
 };
 
 var getLowercase = function() {
+  //ask user if they want to include lowercase letters in password
   var lowercase = window.prompt("Would you like lowercase letters in your password, yes or no?") 
+  //if user selects 'cancel', reset generator 
   if (lowercase === null) {
     return null
   }
+  //if user selects 'yes'
   lowercase = lowercase.toLowerCase(); 
   if (lowercase === "yes") {
     var lowercaseChoice = "abcdefghijklmnopqrstuvwxyz" 
   } 
+  //if user selects 'no', results in empty string
   else if (lowercase === "no") {
     var lowercaseChoice = ""
   }
+  //if user enters an answer outside of requirements, function resets
   else {
     window.alert("please enter a valid option!");
    return this.getLowercase()
@@ -54,17 +68,22 @@ var getLowercase = function() {
 };
 
 var getNumbers = function() {
+  //ask user if they want to include numbers in password
   var numbers = window.prompt("Would you like numbers in your password, yes or no?") 
+  //if user selects 'cancel', reset generator 
   if (numbers === null) {
     return null
   }
+  //if user selects 'yes'
   numbers = numbers.toLowerCase(); 
   if (numbers === "yes") {
     var numbersChoice = "0123456789" 
   } 
+  //if user selects 'no', results in empty string
   else if (numbers === "no") {
     var numbersChoice = ""
   }
+  //if user enters an answer outside of requirements, function resets
   else {
     window.alert("please enter a valid option!");
    return this.getNumbers()
@@ -73,17 +92,22 @@ var getNumbers = function() {
 };
 
 var getSpecialChar = function() {
+  //asks user if they want to include special characters
   var specialChar = window.prompt("Would you like special characters in your password, yes or no?") 
+  //if user selects 'cancel', reset generator 
   if (specialChar === null) {
     return null
   }
+  //if user selects yes
   specialChar = specialChar.toLowerCase(); 
   if (specialChar === "yes") {
     var specialCharChoice = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
   } 
+  //if user selects 'no', results in empty string
   else if (specialChar === "no") {
     var specialCharChoice = ""
   }
+  //if user enters an answer outside of requirements, function resets
   else {
     window.alert("please enter a valid option!");
    return this.getSpecialChar()
@@ -119,15 +143,14 @@ function generatePassword() {
     return ""
   }
   else {
-  console.log(allChoices)  
-  var password = "";
-  for (var i = 0; i < length; i++) {
-    var character = Math.floor(Math.random() * allChoices.length);
-    password += allChoices.substring(character, character + 1);
-}
-//return the value of all values from the for loop
-return password;
-}
+   var password = "";
+   for (var i = 0; i < length; i++) {
+      var character = Math.floor(Math.random() * allChoices.length);
+      password += allChoices.substring(character, character + 1);
+  }
+  //return the value of all values from the for loop
+  return password;
+  }
 };
 
 // Get references to the #generate element
@@ -138,9 +161,7 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
