@@ -82,7 +82,10 @@ function generatePassword() {
   var allChoices = getUppercase() + getLowercase() + getNumbers() + getSpecialChar();
   console.log(allChoices)  
   var password = "";
- 
+  for (var i = 0; i < length; i++) {
+    var character = Math.floor(Math.random() * allChoices.length);
+    password += allChoices.substring(character, character + 1);
+}
 //return the value of all values from the for loop
 return password;
 };
