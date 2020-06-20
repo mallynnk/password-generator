@@ -77,6 +77,18 @@ var getSpecialChar = function() {
 };
 
 
+function generatePassword() {
+  var length = lengthReq();
+  var allChoices = getUppercase() + getLowercase() + getNumbers() + getSpecialChar();
+  console.log(allChoices)  
+  var password = "";
+ 
+//return the value of all values from the for loop
+return password;
+};
+
+var result = generatePassword()
+console.log(result)
 
 
 
