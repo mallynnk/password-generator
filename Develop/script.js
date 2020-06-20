@@ -1,8 +1,11 @@
 
 var lengthReq = function() {
     length = window.prompt("Please enter a password length between 8 and 128 characters");
-      console.log(length)
-      if (length >= 8 && length <=128){
+    console.log(length)
+      if (length === null) {
+        return null
+      }
+      else if (length >= 8 && length <=128) { 
         return length;
       }
       else {
@@ -91,6 +94,9 @@ var getSpecialChar = function() {
 
 function generatePassword() {
   var length = lengthReq();
+  if (length === null) {
+    return "";
+  }
   var uppercase = getUppercase(); 
   if (uppercase === null) {
     return "";
