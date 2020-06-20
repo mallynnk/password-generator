@@ -14,6 +14,9 @@ var lengthReq = function() {
 
 var getUppercase = function() {
   var uppercase = window.prompt("Would you like uppercase letters in your password, yes or no?") 
+  if (uppercase === null) {
+    return null
+  }
   uppercase = uppercase.toLowerCase(); 
   if (uppercase === "yes") {
     var uppercaseChoice = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" 
@@ -30,6 +33,9 @@ var getUppercase = function() {
 
 var getLowercase = function() {
   var lowercase = window.prompt("Would you like lowercase letters in your password, yes or no?") 
+  if (lowercase === null) {
+    return null
+  }
   lowercase = lowercase.toLowerCase(); 
   if (lowercase === "yes") {
     var lowercaseChoice = "abcdefghijklmnopqrstuvwxyz" 
@@ -45,7 +51,10 @@ var getLowercase = function() {
 };
 
 var getNumbers = function() {
-  var numbers = window.prompt("Would you like numbers letters in your password, yes or no?") 
+  var numbers = window.prompt("Would you like numbers in your password, yes or no?") 
+  if (numbers === null) {
+    return null
+  }
   numbers = numbers.toLowerCase(); 
   if (numbers === "yes") {
     var numbersChoice = "0123456789" 
@@ -61,7 +70,10 @@ var getNumbers = function() {
 };
 
 var getSpecialChar = function() {
-  var specialChar = window.prompt("Would you like numbers letters in your password, yes or no?") 
+  var specialChar = window.prompt("Would you like special characters in your password, yes or no?") 
+  if (specialChar === null) {
+    return null
+  }
   specialChar = specialChar.toLowerCase(); 
   if (specialChar === "yes") {
     var specialCharChoice = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
@@ -79,7 +91,28 @@ var getSpecialChar = function() {
 
 function generatePassword() {
   var length = lengthReq();
-  var allChoices = getUppercase() + getLowercase() + getNumbers() + getSpecialChar();
+  var uppercase = getUppercase(); 
+  if (uppercase === null) {
+    return "";
+  }
+  var lowercase = getLowercase();
+  if (lowercase === null) {
+    return "";
+  } 
+  var numbers = getNumbers();
+  if (numbers === null) {
+    return "";
+  }
+  var special = getSpecialChar();
+  if (special === null) {
+    return "";
+  }
+  var allChoices = uppercase + lowercase + numbers + special;
+  if (!allChoices) {
+    window.alert("must select 'yes' for at least one option.");
+    return ""
+  }
+  else {
   console.log(allChoices)  
   var password = "";
   for (var i = 0; i < length; i++) {
@@ -88,22 +121,8 @@ function generatePassword() {
 }
 //return the value of all values from the for loop
 return password;
+}
 };
-
-var result = generatePassword()
-console.log(result)
-
-
-
-
-// variables
-
-var uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-var lowercase = "abcdefghijklmnopqrstuvwxyz";
-var numbers = "0123456789";
-var specialChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
-
-var password = "";
 
 // Get references to the #generate element
 
