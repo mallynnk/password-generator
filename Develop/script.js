@@ -75,6 +75,21 @@ var specialCharChoice = function() {
 };
 
 
+var generate = function () {
+ //add all variables together
+ var allChoices = uppercaseChoice + lowercaseChoice + numbersChoice + specialCharChoice 
+ //set password blank to start
+ var password = "";
+ //for loop to add values till length stops the loop 
+         //reference: https://randompasswordgenerator.org/javascript-password-generator.html 
+ for (var i = 0; i < length; i++) {
+     var character = Math.floor(Math.random() * allChoices.length);
+     password += allChoices.substring(character, character + 1);
+ }
+ //return the value of all values from the for loop
+ return password;
+};
+
 
 
 // var generate = function() {
