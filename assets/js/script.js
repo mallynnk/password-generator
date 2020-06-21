@@ -1,4 +1,3 @@
-
 //length of password
 var lengthReq = function() {
   //ask user to select password length
@@ -14,7 +13,7 @@ var lengthReq = function() {
   }
   //reset function if user enters an answer outside of the requirements
   else {
-    window.alert("please enter a valid option");
+    window.alert("Please enter a valid option");
     lengthReq();     
   }
 };
@@ -38,7 +37,7 @@ var getUppercase = function() {
   }
   //reset function if user enters an answer outside of the requirements
   else {
-    window.alert("please enter a valid option!");
+    window.alert("Please enter a valid option!");
     return this.getUppercase()
   }
   return uppercaseChoice
@@ -63,7 +62,7 @@ var getLowercase = function() {
   }
   //reset function if user enters an answer outside of the requirements
   else {
-    window.alert("please enter a valid option!");
+    window.alert("Please enter a valid option!");
    return this.getLowercase()
   }
   return lowercaseChoice;
@@ -88,7 +87,7 @@ var getNumbers = function() {
   }
   //reset function if user enters an answer outside of the requirements
   else {
-    window.alert("please enter a valid option!");
+    window.alert("Please enter a valid option!");
    return this.getNumbers()
   }
   return numbersChoice;
@@ -113,7 +112,7 @@ var getSpecialChar = function() {
   }
   //reset function if user enters an answer outside of the requirements
   else {
-    window.alert("please enter a valid option!");
+    window.alert("Please enter a valid option!");
    return this.getSpecialChar()
   }
   return specialCharChoice;
@@ -145,7 +144,7 @@ function generatePassword() {
   //bring user back to start if they don't select 'yes' for any option
   var allChoices = uppercase + lowercase + numbers + special;
   if (!allChoices) {
-    window.alert("must select 'yes' for at least one option.");
+    window.alert("You must select 'yes' for at least one option.");
     return ""
   }
   else {
